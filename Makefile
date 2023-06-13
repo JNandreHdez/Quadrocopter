@@ -2,6 +2,8 @@
 CC = g++
 # Compiler flags
 CFLAGS = -Wall -Wextra -pedantic -std=c++11
+# Libraries
+LIBS = -lm
 # Directories
 SRC_DIR = src
 BIN_DIR = bin
@@ -16,7 +18,7 @@ all: quadrocopter
 
 # Target: quadrocopter
 quadrocopter: $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $(BIN_DIR)/quadrocopter $^
+	$(CC) $(CFLAGS) -o $(BIN_DIR)/quadrocopter $^ $(LIBS)
 
 # Rule to compile object files
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp
