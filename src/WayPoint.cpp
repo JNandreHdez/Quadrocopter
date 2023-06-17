@@ -8,6 +8,8 @@
 WayPoint::WayPoint()
 {
 	this->name("<Empty>");
+  this->latitude(0);
+  this->longitude(0);
 }
 
 WayPoint::WayPoint(std::string name, double latitude, double longitude)

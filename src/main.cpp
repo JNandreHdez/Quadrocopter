@@ -10,13 +10,54 @@
 #include "WayPointContainer.h"
 
 int waypoint_class_test() {
-  // Test all constructors
-  
+  std::cout << "[TEST] WayPoint class test" << std::endl;
+  // Test default constructor
+  WayPoint wp_01;
+  assert(wp_01.name() == "<Empty>");
+  assert(wp_01.latitude() == 0.0);
+  assert(wp_01.longitude() == 0.0);
+  std::cout << "[RESULT] default constructor test passed" << std::endl;
+
+  // Test constructor with parameters
+  WayPoint wp_02("Stadt Stuttgart, Schnellzentrum Schlossplatz", 48.778555879487776, 9.180653355900166);
+  assert(wp_02.name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wp_02.latitude() == 48.778555879487776);
+  assert(wp_02.longitude() == 9.180653355900166);
+  std::cout << "[RESULT] constructor with parameters test passed" << std::endl;
+
+  // Test copy constructor
+  WayPoint wp_03(wp_02);
+  assert(wp_03.name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wp_03.latitude() == 48.778555879487776);
+  assert(wp_03.longitude() == 9.180653355900166);
+  std::cout << "[RESULT] copy constructor test passed" << std::endl;
+
+  // Test assignment operator
+  WayPoint wp_04;
+  wp_04 = wp_02;
+  assert(wp_04.name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wp_04.latitude() == 48.778555879487776);
+  assert(wp_04.longitude() == 9.180653355900166);
+  std::cout << "[RESULT] assignment operator test passed" << std::endl;
+
   // Test all getters
-  
+  assert(wp_04.name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wp_04.latitude() == 48.778555879487776);
+  assert(wp_04.longitude() == 9.180653355900166);
+  std::cout << "[RESULT] all getters test passed" << std::endl;
+
   // Test all setters
+  wp_04.name("Schwanenapotheke");
+  wp_04.latitude(48.77468354911471);
+  wp_04.longitude(9.179642427064902);
+  assert(wp_04.name() == "Schwanenapotheke");
+  assert(wp_04.latitude() == 48.77468354911471);
+  assert(wp_04.longitude() == 9.179642427064902);
+  std::cout << "[RESULT] all setters test passed" << std::endl;
 
   // Test all other methods
+  assert(wp_04.distance(wp_02) == 0.004);
+  std::cout << "[RESULT] all other methods test passed" << std::endl;
 
   return 0;
 }
@@ -279,6 +320,8 @@ int main()
 	pCopter_1->print();
 	// Teste mit großer Route und überschrittener Reichweite
 	long_route_test();
+
+  waypoint_class_test();
 
 	return 0;
 }
