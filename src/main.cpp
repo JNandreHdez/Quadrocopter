@@ -56,21 +56,74 @@ int waypoint_class_test() {
   std::cout << "[RESULT] all setters test passed" << std::endl;
 
   // Test all other methods
-  assert(wp_04.distance(wp_02) == 0.004);
+  std::cout << "[TEST] WayPoint::distance() method" << std::endl;
+  double distance = WayPoint::distance(wp_04, wp_02)*1000000;
+  int distance_int = (int) distance;
+  assert(distance_int == 437322);
   std::cout << "[RESULT] all other methods test passed" << std::endl;
 
   return 0;
 }
 
 int waypoint_container_class_test() {
-
+  std::cout << "[TEST] WayPointContainer class test" << std::endl;
   // Test all constructors
   
+  // Test default constructor
+  WayPointContainer wpc_01;
+  assert(wpc_01.getCount() == 0);
+  std::cout << "[RESULT] default constructor test passed" << std::endl;  
+
+  // Test copy constructor
+  WayPoint wp_1("Stadt Stuttgart, Schnellzentrum Schlossplatz", 48.778555879487776, 9.180653355900166);
+  WayPoint wp_2("Schwanenapotheke", 48.77468354911471, 9.179642427064902);
+  WayPoint wp_3("Stadt Stuttgart, Schnelltestzentrum Hohe Strasse", 48.777323361696816, 9.169995484735308);
+
+  WayPointContainer wpc_02;
+  wpc_02.add(wp_1);
+  wpc_02.add(wp_2);
+  wpc_02.add(wp_3);
+
+  WayPointContainer wpc_03(wpc_02);
+  assert(wpc_03.getCount() == 3);
+  // Test if waypoints are the same
+  assert(wpc_03[0].name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wpc_03[0].latitude() == 48.778555879487776);
+  assert(wpc_03[0].longitude() == 9.180653355900166);
+  assert(wpc_03[1].name() == "Schwanenapotheke");
+  assert(wpc_03[1].latitude() == 48.77468354911471);
+  assert(wpc_03[1].longitude() == 9.179642427064902);
+  assert(wpc_03[2].name() == "Stadt Stuttgart, Schnelltestzentrum Hohe Strasse");
+  assert(wpc_03[2].latitude() == 48.777323361696816);
+  assert(wpc_03[2].longitude() == 9.169995484735308);
+  std::cout << "[RESULT] copy constructor test passed" << std::endl;
+  
+  // Test assignment operator
+  WayPointContainer wpc_04;
+  wpc_04 = wpc_02;
+  assert(wpc_04.getCount() == 3);
+  // Test if waypoints are the same
+  assert(wpc_04[0].name() == "Stadt Stuttgart, Schnellzentrum Schlossplatz");
+  assert(wpc_04[0].latitude() == 48.778555879487776);
+  assert(wpc_04[0].longitude() == 9.180653355900166);
+  assert(wpc_04[1].name() == "Schwanenapotheke");
+  assert(wpc_04[1].latitude() == 48.77468354911471);
+  assert(wpc_04[1].longitude() == 9.179642427064902);
+  assert(wpc_04[2].name() == "Stadt Stuttgart, Schnelltestzentrum Hohe Strasse");
+  assert(wpc_04[2].latitude() == 48.777323361696816);
+  assert(wpc_04[2].longitude() == 9.169995484735308);
+  std::cout << "[RESULT] assignment operator test passed" << std::endl;
+
   // Test all getters
+  assert(wpc_04.getCount() == 3);
   
   // Test all setters
-  
+  // Test setting name of Waypoint at specific index
+  wpc_04[0].name("Schwanenapotheke");
+  assert(wpc_04[0].name() == "Schwanenapotheke");
+
   // Test all other methods
+
 
   return 0;
 }
