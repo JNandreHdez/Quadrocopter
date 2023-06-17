@@ -56,7 +56,6 @@ int waypoint_class_test() {
   std::cout << "[RESULT] all setters test passed" << std::endl;
 
   // Test all other methods
-  std::cout << "[TEST] WayPoint::distance() method" << std::endl;
   double distance = WayPoint::distance(wp_04, wp_02)*1000000;
   int distance_int = (int) distance;
   assert(distance_int == 437322);
@@ -121,9 +120,7 @@ int waypoint_container_class_test() {
   // Test setting name of Waypoint at specific index
   wpc_04[0].name("Schwanenapotheke");
   assert(wpc_04[0].name() == "Schwanenapotheke");
-
-  // Test all other methods
-
+  std::cout << "[RESULT] all setters test passed" << std::endl;
 
   return 0;
 }
@@ -132,6 +129,7 @@ int quadrocopter_class_test() {
 
   // Test all constructors
   
+
   // Test all getters
   
   // Test all setters
@@ -375,6 +373,8 @@ int main()
 	long_route_test();
 
   waypoint_class_test();
+
+  waypoint_container_class_test();
 
 	return 0;
 }

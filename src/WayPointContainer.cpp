@@ -12,6 +12,7 @@ WayPointContainer::WayPointContainer(const WayPointContainer& other) : count(0) 
     for (size_t i = 0; i < other.count; i++) {
         waypoints.at(i) = new WayPoint(*(other.waypoints[i]));
     }
+    count = other.count;
 }
 
 WayPointContainer& WayPointContainer::operator=(const WayPointContainer& other) {
