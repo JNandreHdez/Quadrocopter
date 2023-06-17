@@ -1,15 +1,15 @@
 #pragma once
 #include <string>
 
-static const double M_PI = atan(1.0) * 4;
+static const double PI = 3.14159265358979323846;
 class WayPoint
 {
 	// Initialization of static const member variable outside the class definition
 
 	private:
-		std::string name;
-		double latitude;
-		double longitude;
+		using LOCATION = std::pair<double, double>;
+		LOCATION _location;
+		std::string _name;
 
 	public :
 		// Konstruktor
@@ -18,17 +18,17 @@ class WayPoint
 		WayPoint(std::string name, double latitude, double longitude);
 
 		// Destruktor
-		~WayPoint();
+		~WayPoint() = default;
 		
 		// Getter
-		std::string get_name() const;
-		double get_latitude() const;
-		double get_longitude() const;
+		std::string name() const;
+		double latitude() const;
+		double longitude() const;
 
 		// Setter
-		void set_name(const std::string&);
-		void set_latitude(double);
-		void set_longitude(double);
+		void name(const std::string&);
+		void latitude(double);
+		void longitude(double);
 
 		// Methoden
 		std::string to_string() const;
@@ -51,8 +51,6 @@ class WayPoint
 			return result;
 		}
 		static double radians(double arg) {
-			return arg * M_PI / 180;
-		}
-		
-		using LOCATION = std::pair<double, double>;
+			return arg * PI / 180;
+		}		
 };

@@ -14,9 +14,10 @@ private:
 public:
     QuadroCopter(const std::string& name, const WayPoint& home, const std::string& model, double range);
 
+    void configure(const std::string& model, double range) override;
     void add(const WayPoint& arg) override;
     double distance() const override;
-    void print() const override;
+    void print(bool contentFlag = true) const override;
 };
 
 #endif // QUADROCOPTER_H

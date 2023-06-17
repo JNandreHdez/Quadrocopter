@@ -3,11 +3,10 @@
 #include "WayPoint.h"
 #include <vector>
 
-template <typename T, size_t n>
-using Container = std::array<T, n>;
-
 class WayPointContainer 
 {
+    template <typename T, size_t n>
+    using Container = std::array<T, n>;
     private:
         static const size_t MAX_SIZE = 100;        
         size_t count;
@@ -30,7 +29,7 @@ class WayPointContainer
         // Helper function to set the name of a waypoint at a specific index
         WayPointContainer& name(int index, const std::string& newName) {
             if (index >= 0 && index < count) {
-                (*waypoints[index]).set_name(newName);
+                (*waypoints[index]).name(newName);
             }
             return *this;
         }
