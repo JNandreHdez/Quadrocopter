@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include "WayPoint.h"
 class Test
  {
    private:
+     static const Waypoint[] sample_waypoints;
      QuadroCopterTest qctest;
      WaypointTest wptst;
      WaypointContainerTest wpctst;
